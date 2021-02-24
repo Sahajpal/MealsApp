@@ -20,17 +20,19 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _lactoseFree = false;
 
   @override
-  initState(){
+  initState() {
     _glutenFree = widget.currentFilters['gluten'];
     _lactoseFree = widget.currentFilters['lactose'];
     _vegetarian = widget.currentFilters['vegetarian'];
     _vegan = widget.currentFilters['vegan'];
   }
 
-  Widget _buildSwitchListLite(String title,
-      String description,
-      bool currentValue,
-      Function updateValue,) {
+  Widget _buildSwitchListLite(
+    String title,
+    String description,
+    bool currentValue,
+    Function updateValue,
+  ) {
     return SwitchListTile(
       title: Text(title),
       value: currentValue,
@@ -45,15 +47,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: Text('Your Filters'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.save), onPressed: () {
-            final selectedFilters = {
-              'gluten': _glutenFree,
-              'lactose': _lactoseFree,
-              'vegan': _vegan,
-              'vegetarian': _vegetarian,
-            };
-                widget.saveFilters(selectedFilters);
-          },),
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              final selectedFilters = {
+                'gluten': _glutenFree,
+                'lactose': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+              widget.saveFilters(selectedFilters);
+            },
+          ),
         ],
       ),
       drawer: MainDrawer(),
@@ -63,10 +68,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             padding: EdgeInsets.all(20),
             child: Text(
               'Adjust your meal selection.',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline6,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           Expanded(
@@ -76,9 +78,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Gluten-free',
                   'Only include gluten-free meals.',
                   _glutenFree,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _glutenFree = newValue;
                       },
                     );
@@ -88,9 +90,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Lactose-free',
                   'Only include lactose-free meals.',
                   _lactoseFree,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _lactoseFree = newValue;
                       },
                     );
@@ -100,9 +102,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Vegetarian',
                   'Only include vegetarian meals.',
                   _vegetarian,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _vegetarian = newValue;
                       },
                     );
@@ -112,9 +114,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Vegan',
                   'Only include vegan meals.',
                   _vegan,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _vegan = newValue;
                       },
                     );
